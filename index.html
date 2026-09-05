@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-destination="website">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>makeme. — name it, and it is made</title>
+<meta name="description" content="Twelve addresses, one machine. Say what you want at makeme.website, makeme.codes, makeme.email or any of the twelve, and it is made.">
+<meta name="theme-color" content="#D9D6CE">
+<link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/board.css">
+<meta property="og:title" content="makeme. — name it, and it is made">
+<meta property="og:description" content="Twelve addresses, one machine.">
+<meta property="og:type" content="website">
+</head>
+<body>
+<!--
+  DIRECTION CONTRACT · seed a3f7f56b
+  THESIS: makeme. is a board of twelve destinations — you name one, the machine
+  commits, and it takes you there. Refuses the category default: the dark
+  gradient hero with a prompt box floating in space.
+  OWN-WORLD: a Solari split-flap departure board hanging in a terrazzo station
+  hall. Warm-grey aggregate ground, graphite painted-steel chassis on visible
+  mounts, milled aluminium hairlines, warm-white painted legend, and exactly one
+  lit lamp colour — the active destination's — which appears nowhere else.
+  Archivo's width axis sets every noun to one optical slot; Martian Mono is the
+  technical legend. Motion is mechanical indexing: overshoot, settle, split-flap.
+  STORY: this address already started your sentence; finish it in the slot and
+  the machine makes the thing. Ten siblings do the same for other nouns.
+  FIRST VIEWPORT: lit hall, dark board hung centre. Inside it `makeme.` fixed at
+  monumental scale beside a rotating barrel of the twelve nouns under a hairline
+  selection window; below, the mono status strip, then the slot and the lit
+  MAKE IT key. Primary action sits inside the board, one screen, no scroll.
+  FORM: The Departure Board — candidate 5 of the grounded list; seed a3f7f56b.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the
+  finish review, the verdict, DESIGN.md, and every shipping raster carrying its
+  provenance.
+-->
+<a class="skip" href="#slot">Skip to the slot</a>
+
+<header class="rail">
+  <a class="rail__mark" href="/" aria-label="makeme. home">makeme<span class="dot">.</span></a>
+  <nav class="rail__nav">
+    <a class="rail__link" href="#how" data-i18n="rail.how">How it works</a>
+    <a class="rail__link" href="#destinations" data-i18n="rail.all">All twelve</a>
+    <button class="chip legend" id="langBtn" aria-haspopup="dialog">
+      <span class="chip__dot" aria-hidden="true"></span>
+      <span id="langLabel">EN</span>
+    </button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== THE BOARD ===================== -->
+  <section class="hall" aria-labelledby="lockup">
+    <div class="board">
+      <span class="board__mount board__mount--l" aria-hidden="true"></span>
+      <span class="board__mount board__mount--r" aria-hidden="true"></span>
+
+      <div class="board__well">
+        <h1 class="lockup" id="lockup">
+          <span class="lockup__fixed">makeme<span class="lockup__dot">.</span></span>
+          <span class="dial" id="dial" role="listbox" tabindex="0" aria-label="Destination">
+            <span class="dial__cyl" id="dialCyl"></span>
+            <span class="dial__glass" aria-hidden="true"></span>
+            <span class="dial__window" aria-hidden="true"></span>
+          </span>
+        </h1>
+        <!-- Outside the <h1> deliberately: nested inside it, the live region
+             joined the heading's accessible name, so the h1 announced itself as
+             the wordmark plus the whole widget plus whichever noun was current. -->
+        <span class="sr-only" id="nounLive" aria-live="polite">website</span>
+
+        <p class="board__line" id="boardLine" data-i18n="board.line">
+          Describe the site. Get the site — pages, copy, images, and the code behind them.
+        </p>
+
+        <dl class="strip">
+          <div class="strip__cell">
+            <dt class="strip__key legend" data-i18n="strip.dest">Destination</dt>
+            <dd class="strip__val" id="sDest">makeme.website</dd>
+          </div>
+          <div class="strip__cell">
+            <dt class="strip__key legend" data-i18n="strip.makes">Makes</dt>
+            <dd class="strip__val" id="sMakes">a website</dd>
+          </div>
+          <div class="strip__cell">
+            <dt class="strip__key legend" data-i18n="strip.lang">Language</dt>
+            <dd class="strip__val" id="sLang">English</dd>
+          </div>
+          <div class="strip__cell">
+            <dt class="strip__key legend" data-i18n="strip.status">Status</dt>
+            <!-- Honest by default, including with JavaScript off: there is no
+                 generator wired to this build, so the board does not say Ready.
+                 main.js upgrades this the moment GENERATE_ENDPOINT is set. -->
+            <dd class="strip__val strip__val--lamp" id="sStatus" data-i18n="status.unwired">Not connected</dd>
+          </div>
+        </dl>
+
+        <form class="slot" id="slot" novalidate>
+          <label class="sr-only" for="prompt" data-i18n="slot.label">Describe what you want made</label>
+          <span class="slot__field">
+            <span class="slot__prefix" id="slotPrefix" aria-hidden="true">makeme.website</span>
+            <input class="slot__input" id="prompt" name="prompt" type="text" autocomplete="off"
+                   data-i18n-attr="placeholder:slot.placeholder"
+                   placeholder="a one-page site for my ceramics studio — warm, quiet, a shop and a kiln diary">
+          </span>
+          <button class="slot__go" type="submit" data-i18n="slot.go">Make it</button>
+        </form>
+        <p class="slot__hint" id="slotHint">
+          <span data-i18n="slot.hint">Drag the wheel, or press</span>
+          <kbd>↑</kbd> <kbd>↓</kbd>
+          <span data-i18n="slot.hint2">— or just type the first letter of what you need.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEPARTURES ===================== -->
+  <section class="section" aria-labelledby="depHead">
+    <div class="section__head">
+      <h2 id="depHead" data-i18n="dep.head">What left the board today</h2>
+      <p data-i18n="dep.sub">Authored examples, not live traffic. Nothing has launched yet, so nothing here is a customer, a case study, or a number we are asking you to believe.</p>
+    </div>
+    <div class="rows" id="departures"></div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section" id="how" aria-labelledby="howHead">
+    <div class="section__head">
+      <h2 id="howHead" data-i18n="how.head">You are already halfway through the sentence</h2>
+    </div>
+    <div class="rows">
+      <div class="row row--step">
+        <span class="row__no">01</span>
+        <div class="row__body">
+          <h3 data-i18n="how.1.h">Arrive at the noun</h3>
+          <p data-i18n="how.1.p">Twelve addresses, twelve things. Typing one into the bar is the first half of the request, so the board is already set before you have touched anything.</p>
+        </div>
+        <span class="row__remark legend" data-i18n="how.1.r">hostname → destination</span>
+      </div>
+      <div class="row row--step">
+        <span class="row__no">02</span>
+        <div class="row__body">
+          <h3 data-i18n="how.2.h">Finish it in the slot</h3>
+          <p data-i18n="how.2.p">One line, your own words, in whichever of the ninety-nine languages you think in. No prompt craft, no template picker, no onboarding.</p>
+        </div>
+        <span class="row__remark legend" data-i18n="how.2.r">99 languages</span>
+      </div>
+      <div class="row row--step">
+        <span class="row__no">03</span>
+        <div class="row__body">
+          <h3 data-i18n="how.3.h">Watch the board commit</h3>
+          <p data-i18n="how.3.p">The destination, the pending change and the state are all on the board before anything is finished. A machine that shows its work is a machine you can stop.</p>
+        </div>
+        <span class="row__remark legend" data-i18n="how.3.r">state before result</span>
+      </div>
+      <div class="row row--step">
+        <span class="row__no">04</span>
+        <div class="row__body">
+          <h3 data-i18n="how.4.h">Take the artifact</h3>
+          <p data-i18n="how.4.p">Files, code, copy, infrastructure — the thing itself, not a preview of it and not a brief for someone else to build.</p>
+        </div>
+        <span class="row__remark legend" data-i18n="how.4.r">files, not previews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE FAMILY ===================== -->
+  <section class="section" id="destinations" aria-labelledby="destHead">
+    <div class="section__head">
+      <h2 id="destHead" data-i18n="dest.head">Twelve destinations, one machine</h2>
+      <p data-i18n="dest.sub">Every address runs this same board. Pick a row and the whole page retimes to it — the lamp, the wheel, the slot, the example. That retiming is the product, not a demonstration of it.</p>
+    </div>
+    <div class="rows" id="destRows"></div>
+  </section>
+
+  <!-- ===================== SPECIMEN ===================== -->
+  <section class="section" aria-labelledby="specHead">
+    <div class="section__head">
+      <h2 id="specHead" data-i18n="spec.head">What actually comes out</h2>
+      <p data-i18n="spec.sub">One run, its manifest, and a real excerpt from it — including the parts where the machine says what it will not do.</p>
+    </div>
+    <div class="specimen" id="specimen"></div>
+  </section>
+
+  <!-- ===================== LANGUAGES ===================== -->
+  <section class="section" aria-labelledby="langHead">
+    <div class="section__head">
+      <h2 id="langHead" data-i18n="lang.head">The board speaks your language, correctly</h2>
+      <p data-i18n="lang.sub">Not a machine-translated marketing page. The noun itself, in the right case, with the plural rules each language really uses — Arabic has six categories, Polish three, Japanese one. A pack that carries English's two into either is not partly translated, it is broken.</p>
+    </div>
+    <div class="rows" id="tongues"></div>
+  </section>
+
+  <!-- ===================== CLOSE ===================== -->
+  <section class="section close">
+    <h2 data-i18n="close.head">So. What do you want made?</h2>
+    <p data-i18n="close.sub">The wheel is still turning. Stop it wherever you like.</p>
+    <form class="slot" id="slot2" novalidate style="margin-top:var(--gap-l)">
+      <label class="sr-only" for="prompt2" data-i18n="slot.label">Describe what you want made</label>
+      <span class="slot__field">
+        <span class="slot__prefix" id="slotPrefix2" aria-hidden="true">makeme.website</span>
+        <input class="slot__input" id="prompt2" name="prompt" type="text" autocomplete="off"
+               data-i18n-attr="placeholder:slot.placeholder"
+               placeholder="a one-page site for my ceramics studio — warm, quiet, a shop and a kiln diary">
+      </span>
+      <button class="slot__go" type="submit" data-i18n="slot.go">Make it</button>
+    </form>
+    <p class="slot__hint" id="slotHint2" style="color:var(--ink-faint)"></p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <p class="section__kicker legend" data-i18n="foot.dests">Destinations</p>
+      <ul class="foot__list" id="footList"></ul>
+    </div>
+    <div>
+      <p class="section__kicker legend" data-i18n="foot.about">About this board</p>
+      <p class="foot__note" data-i18n="foot.note">
+        One codebase serves all twelve addresses; the hostname is the entire
+        configuration. Translations come from a shared dictionary of ninety-nine
+        languages and ship as static packs, never fetched at runtime.
+      </p>
+    </div>
+    <div>
+      <p class="section__kicker legend" data-i18n="foot.honest">What this page does not claim</p>
+      <p class="foot__note" data-i18n="foot.honest.note">
+        No customers, no ratings, no prices, no benchmarks. Every example here is
+        authored and labelled. When there is real proof, it will replace them.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<dialog class="langboard" id="langBoard" aria-labelledby="langBoardHead">
+  <div class="langboard__head">
+    <span class="legend" id="langBoardHead" data-i18n="langboard.head">Language · 99 in the dictionary</span>
+    <button class="langboard__close legend" id="langClose" data-i18n="langboard.close">Close</button>
+  </div>
+  <div class="langboard__list" id="langList"></div>
+</dialog>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

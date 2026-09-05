@@ -1,0 +1,112 @@
+{
+  "title": "makeme. — choose the visual world",
+  "question": "The roll assigned The Departure Board. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Departure Board",
+      "kicker": "THE ROLL",
+      "lineage": "Solari di Udine split-flap boards, Milano Centrale & JFK, 1960s–90s",
+      "thesis": "makeme. is a board of eleven destinations. You name one, the machine commits, and it takes you there. Refuses the category default: the dark gradient hero with a glowing prompt box floating in space.",
+      "palette": ["#D9D6CE", "#101418", "#191E24", "#F0EBE0", "#F5A524"],
+      "materials": ["terrazzo hall floor", "graphite painted steel chassis", "milled aluminium hairlines", "warm-white painted legend", "single amber indicator lamp"],
+      "viewport": "A warm-grey terrazzo hall, full bleed and lit. A dark graphite board hangs in it on visible mounts. Inside the board, at monumental scale: 'makeme.' fixed in warm white, and immediately after it a rotating cylinder of the eleven nouns — website, codes, software, cloud, email, team, club, expert, agency, boutique, support — curving away top and bottom under perspective, blurred at the edges, the centre row framed by a hairline selection window and lit by that destination's colour. Beneath it a mono status strip that retimes as the dial rolls, then the prompt slot and one lit MAKE IT key. Below the board, a departures list of what the machine last made.",
+      "risk": "A dark instrument risks collapsing into the generic dark-AI hero the moment the hall loses its material. The terrazzo aggregate and the aluminium hairlines are load-bearing, not decoration.",
+      "raised": [
+        { "from": "Terminal Yellow Wayfinding (competitive)", "raise": "One message per band, and the accent colour is reserved for the active destination — it appears nowhere else on the page." },
+        { "from": "Algorave Source Floor (competitive)", "raise": "The change is visible before it lands: the board shows the pending destination and the prompt's effect before any artifact exists." },
+        { "from": "Pickling Brine Calendar (declined)", "raise": "Time is a real axis. Rows carry live elapsed and ETA, and the departures list orders by clock, not by prettiness." },
+        { "from": "Iridescent Cloud Edge (declined)", "raise": "Colour is confined to illuminated edges and the lit centre band. The text field stays achromatic." },
+        { "from": "Teletext Service (declined)", "raise": "Direct addressing is genuine input — type a letter or press an arrow to jump to any of the eleven, not just drag past them." },
+        { "from": "Gyaru Magazine Density (declined)", "raise": "Density courage: the board is full of live information, never a sparse single-word hero." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "The Automat Wall",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Horn & Hardart automats, chrome-framed windows, 1912–1970",
+      "thesis": "Eleven little chrome windows in a marble wall, each holding a finished thing. Drop a coin, turn the knob, the door opens and it is already made.",
+      "palette": ["#EFEAE1", "#B9C0C4", "#2A2622", "#0F5C4A", "#C8442E"],
+      "materials": ["veined marble", "nickel-chrome window frames", "bevelled glass", "enamel knobs"],
+      "viewport": "A wall of eleven glass windows filling the viewport, each with its noun etched on the glass and its output visible behind it. The active window's door swings open.",
+      "risk": "It is my own top-ranked candidate, which is exactly why the roll moved past it. Honest risk: a food-service metaphor makes 'makeme.codes' read as a snack, and the vending frame quietly says 'pre-made', which is the opposite of generated-for-you.",
+      "case": "Strongest audience identification of anything on my list — everyone understands a window that opens with the thing already in it."
+    },
+    {
+      "id": "challenger-wayfinding",
+      "label": "Terminal Yellow Wayfinding",
+      "verdict": "competitive",
+      "lineage": "Schiphol / Frutiger airport sign systems",
+      "thesis": "makeme. as a concourse. Each domain is a gate, signed at monumental scale, one message per yellow band.",
+      "palette": ["#FFD200", "#0A0A0A", "#FFFFFF"],
+      "materials": ["saturated sign panel", "black humanist sans", "white pictograms on black insets"],
+      "viewport": "Hung yellow bands at each decision point, gate number monumental, arrows locked to the edge they point past.",
+      "case": "Holds product clarity outright — one message per band is exactly right for eleven nouns. Ties on audience identification, and it lives in the same terminal as the assigned direction rather than opposing it.",
+      "risk": "Signage points at things; it never makes them. The mechanism has to be smuggled in somewhere the sign system does not naturally have a slot."
+    },
+    {
+      "id": "challenger-algorave",
+      "label": "Algorave Source Floor",
+      "verdict": "competitive",
+      "lineage": "live-coded music, projected source over a dance floor",
+      "thesis": "The prompt buffer is the stage. You edit the line, and on the next cycle boundary the room changes.",
+      "palette": ["#000000", "#39FF6A", "#FF3AF0", "#FFB020"],
+      "materials": ["projector black", "phosphor syntax", "monospaced type at stage scale"],
+      "viewport": "One code buffer at stage scale, the cursor line as the downbeat, pending changes flashing amber before they land.",
+      "case": "Wins product clarity on the live-generation mechanism — 'visible before it sounds' is precisely what a generating prompt should feel like.",
+      "risk": "Loses audience identification across the family: it is perfect for makeme.codes and actively wrong for makeme.boutique and makeme.support."
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletext Service",
+      "verdict": "declined",
+      "lineage": "broadcast teletext magazines, 40×24 cell grid",
+      "palette": ["#000000", "#FFFF00", "#00FFFF", "#FFFFFF"],
+      "materials": ["block mosaic", "bitmap face"],
+      "case": "Declined on product truth, not taste: a fixed 40×24 bitmap lattice cannot render Arabic, Hebrew or CJK, and PRODUCT.md commits to 78+ languages with RTL.",
+      "kept": "Direct addressing as the entire input model."
+    },
+    {
+      "id": "challenger-gyaru",
+      "label": "Gyaru Magazine Density",
+      "verdict": "declined",
+      "lineage": "Japanese street-fashion spreads",
+      "palette": ["#FF3D8B", "#E8B923", "#FFFFFF"],
+      "materials": ["cut-out shingle", "glitter outlines", "hand price call-outs"],
+      "case": "Loses both axes. Hand-written price call-outs are the system's core device and there is no pricing to state — the form would require inventing a claim.",
+      "kept": "Density courage — fill the page, never a sparse hero."
+    },
+    {
+      "id": "challenger-pickling",
+      "label": "Pickling Brine Calendar",
+      "verdict": "declined",
+      "lineage": "seasonal ferment shelves",
+      "palette": ["#F2EFE6", "#E2725B", "#7A9A4F"],
+      "materials": ["jar glass", "kraft labels"],
+      "case": "Loses both axes. Nobody arriving to generate a website identifies with maturation, and 'wait days for it to be ready' inverts the product.",
+      "kept": "Time as a real organizing axis — live elapsed and ETA on every row."
+    },
+    {
+      "id": "challenger-cloud",
+      "label": "Iridescent Cloud Edge",
+      "verdict": "declined",
+      "lineage": "cloud-edge diffraction",
+      "palette": ["#FFFFFF", "#5A6570", "#B8E6D0", "#E8BFD8"],
+      "materials": ["pastel hairline fringe", "achromatic field"],
+      "case": "Loses both axes. Atmospheric optics carries no imperative and no mechanism; the product is a machine you command.",
+      "kept": "Colour confined to hairline illuminated edges while the text field stays achromatic."
+    }
+  ],
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "What every AI generator ships: near-black hero, soft violet-to-blue gradient glow, a big rounded prompt box centred in space, three feature cards, a logo row.",
+    "palette": ["#0B0B12", "#FFFFFF", "#7C5CFF", "#22D3EE"],
+    "materials": ["gradient mesh", "glass cards", "generic line icons"],
+    "viewport": "Centred prompt box on a dark gradient, three cards below, executed at full craft.",
+    "risk": "Indistinguishable from every competitor by design — which is sometimes exactly the right trade."
+  },
+  "reroll": { "registers": ["safer", "bolder"] },
+  "steer": true
+}

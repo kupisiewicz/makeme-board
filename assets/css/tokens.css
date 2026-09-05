@@ -1,0 +1,115 @@
+/* ===========================================================================
+   makeme. — design tokens
+   World: a Solari split-flap departure board hanging in a terrazzo station hall.
+
+   The page ground is the HALL, not the board. That inversion is the whole
+   escape from the category default (dark hero + neon glow): the instrument is
+   dark because it is painted steel in a lit room, and it hangs in daylight.
+   Flatten the hall to a flat grey and the world collapses. The terrazzo
+   aggregate and the milled aluminium hairlines are load-bearing.
+   =========================================================================== */
+
+:root {
+  /* --- The hall ------------------------------------------------------- */
+  --hall: #d9d6ce; /* warm-grey terrazzo, the ground everything sits on */
+  --hall-lit: #e4e1d9; /* where the light falls, top of the page */
+  --hall-deep: #c3bfb5; /* under the board, in its shadow */
+  --hall-line: #b3aea3; /* expansion joints in the floor */
+
+  /* --- The board ------------------------------------------------------ */
+  --chassis: #101418; /* graphite painted steel */
+  --chassis-lit: #1b2128; /* the top edge, catching the hall light */
+  --chassis-deep: #080b0d; /* the recessed well the cards sit in */
+  --card: #191e24; /* a flap card at rest */
+  --card-lit: #242b33; /* a flap card in the selection window */
+
+  /* --- Marks on the board ---------------------------------------------
+     Every value here clears 4.5:1 against the surface it is used on. The
+     first pass set --legend-faint to #4E555D (2.22:1 on --card) and
+     --ink-faint to #8D877B (2.46:1 on --hall): both read as "quiet" on a
+     designer's screen and as illegible to anyone else. Quiet is a hue and a
+     weight decision, not a contrast one. */
+  --legend: #f0ebe0; /* warm white paint. Never #fff — paint is not paper. */
+  --legend-dim: #aeb5bd; /* 7.9:1 on --card */
+  --legend-faint: #8b939c; /* 5.3:1 on --card */
+  --alu: #7f858b; /* milled aluminium hairline */
+  --alu-lit: #c2c8cd; /* its lit top bevel */
+
+  /* The gap between the upper and lower flap of a split-flap card. It reads as
+     a cut straight through the glyph, so it is darker than the well behind it. */
+  --seam: #05080a;
+
+  /* --- Ink on the hall ------------------------------------------------ */
+  --ink: #16130f;
+  --ink-dim: #5a554c; /* 5.1:1 on --hall */
+  --ink-faint: #55504a; /* 5.5:1 on --hall, 4.9:1 on the footer's mix */
+
+  /* --- The lamp -------------------------------------------------------
+     Set per destination by main.js. Amber is the board's own default, the
+     colour a real Solari lamp burns when a service is on time. */
+  --lamp: #ffb020;
+  --lamp-ink: #16130f; /* text that sits ON the lamp colour */
+
+  /* The board's own in-progress lamp — a STATE colour, not a destination one.
+     Fixed on purpose: a list of past runs must not restate every destination
+     colour at once, and it must not flicker as the wheel turns. */
+  --signal: #b07208;
+
+  /* --- Type ------------------------------------------------------------
+     Archivo carries a width axis (62–125). That is not decoration here: every
+     destination noun sets to the SAME optical width so each one fills the
+     board's slot exactly, which is what a real destination board does.
+     Martian Mono is the board's technical legend — codes, status, times. */
+  --face-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --face-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.86rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.06rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.45rem, 1.25rem + 1vw, 2rem);
+  --step-3: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --step-4: clamp(2.4rem, 1.6rem + 4vw, 4.5rem);
+
+  /* The lockup. One value drives `makeme.` and the dial together so the
+     sentence never breaks apart across breakpoints. */
+  --lockup: clamp(2.4rem, 0.5rem + 7vw, 7.4rem);
+
+  /* --- Rhythm ---------------------------------------------------------- */
+  --gap-xs: 0.4rem;
+  --gap-s: 0.75rem;
+  --gap: 1.25rem;
+  --gap-l: 2.5rem;
+  --gap-xl: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --rail: clamp(1.1rem, 0.5rem + 2.5vw, 3.5rem); /* page gutter */
+  --measure: 62ch;
+
+  /* --- Machine motion ---------------------------------------------------
+     Everything on this page moves like a part indexing into position: fast
+     departure, slight overshoot, settle. Nothing eases gently both ways —
+     that is software motion, and this is a machine. */
+  --index: 380ms cubic-bezier(0.18, 0.92, 0.24, 1.04);
+  --index-fast: 190ms cubic-bezier(0.2, 0.9, 0.3, 1.02);
+  --flap: 58ms linear;
+
+  --radius: 3px; /* sheet metal, not software */
+  --radius-board: 8px;
+
+  color-scheme: light;
+}
+
+/* One lamp per destination, applied to the document root as `data-destination`,
+   so a single attribute retimes the entire page — dial band, row indicators,
+   the MAKE IT key, focus rings, and the specimen frame.
+   Adding a destination means a row here and a row in destinations.js. */
+[data-destination="website"] { --lamp: #ffb020; }
+[data-destination="codes"] { --lamp: #5ce07a; }
+[data-destination="software"] { --lamp: #9d8cff; }
+[data-destination="cloud"] { --lamp: #4cc3ff; }
+[data-destination="email"] { --lamp: #ff8a3d; }
+[data-destination="team"] { --lamp: #ff6fa5; }
+[data-destination="club"] { --lamp: #e56bff; }
+[data-destination="expert"] { --lamp: #ffd23f; }
+[data-destination="agency"] { --lamp: #ff5c5c; }
+[data-destination="boutique"] { --lamp: #ff9eb5; }
+[data-destination="services"] { --lamp: #a9e34b; }
+[data-destination="support"] { --lamp: #2fd9c5; }

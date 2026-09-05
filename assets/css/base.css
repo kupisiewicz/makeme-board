@@ -1,0 +1,217 @@
+/* ===========================================================================
+   makeme. — reset, the hall, and typographic law
+   =========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  font-family: var(--face-display);
+  font-size: var(--step-0);
+  font-variation-settings: "wdth" 100, "wght" 400;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--hall);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* --- The terrazzo floor ---------------------------------------------------
+   Aggregate chips scattered at three sizes across two offset tiles, so the
+   repeat never reads as a repeat. This is the material that keeps the dark
+   board from becoming a generic dark hero; it is not a decorative flourish. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  /* the light source: the hall is brighter at the top, like a skylight */
+  background: linear-gradient(178deg, var(--hall-lit) 0%, var(--hall) 46%, var(--hall-deep) 100%);
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* The aggregate itself: A REAL RASTER TILE, not gradients.
+   assets/brand/terrazzo.png is a 480px seamless tile — three grades of crushed
+   stone (limestone, basalt, ochre, serpentine) over a mottled cement matrix,
+   generated deterministically so a rebuild reproduces it exactly. Deliberately
+   neutral in hue: the hall carries no colour so the one lamp can.
+   Judge the opacity in a screenshot, never in this stylesheet. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../brand/terrazzo.png") repeat;
+  /* Tile scale is the whole judgement: at 300px the chips read as pebbles and
+     compete with the board. At 165px they read as aggregate in a floor, which
+     is what a hall looks like from standing height. */
+  background-size: 165px 165px;
+  opacity: 0.42;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* No decorative grid overlay here on purpose. An earlier pass drew fixed
+   vertical "expansion joints" every 25vw; they read as a generated-UI grid
+   rather than as a floor, and a joint that stays put while the page scrolls is
+   not a floor at all. */
+
+img,
+svg,
+video { display: block; max-width: 100%; height: auto; }
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* The browser's own surfaces belong to the world too. Leaving selection and
+   scrollbars on their defaults is where a committed page quietly stops. */
+::selection {
+  background: var(--lamp);
+  color: var(--lamp-ink);
+}
+
+html {
+  scrollbar-color: var(--alu) var(--hall-deep);
+  scrollbar-width: thin;
+}
+
+/* --- Typographic law ------------------------------------------------------
+   Board legend: mono, tracked out, small caps energy. Every technical label on
+   the page — destination codes, status words, step numbers, language codes —
+   is set this way, and nothing else is. */
+.legend {
+  font-family: var(--face-mono);
+  font-size: var(--step--1);
+  font-variation-settings: "wdth" 100, "wght" 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-variation-settings: "wdth" 92, "wght" 680;
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); font-variation-settings: "wdth" 96, "wght" 620; letter-spacing: -0.012em; }
+
+p { text-wrap: pretty; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: var(--rail);
+  top: -4rem;
+  z-index: 60;
+  padding: 0.7rem 1.1rem;
+  background: var(--chassis);
+  color: var(--legend);
+  text-decoration: none;
+  transition: top var(--index-fast);
+}
+.skip:focus-visible { top: 0.75rem; }
+
+/* One rhythm for the whole page: more space above a heading than below it.
+   Padding is top-only on purpose — two adjacent sections each carrying a full
+   block of it produced a void twice the intended gap. */
+.section {
+  padding: var(--gap-xl) var(--rail) 0;
+}
+
+/* A full-width rule opens each section. This replaces the eyebrow kickers that
+   used to sit above the headings and draw this line with a ::after — an
+   eyebrow is a label nobody reads, and the heading can carry its own weight.
+   The rule was the only part doing real work, so the rule stays. */
+.section + .section,
+.rows + .section,
+main > .section:first-of-type {
+  border-top: 1px solid var(--hall-line);
+}
+
+/* The kicker rule runs the full width of the section, tying the column of
+   reading matter to the board rows beneath it. Only the prose is measured. */
+.section__head {
+  margin-bottom: var(--gap-l);
+}
+.section__head h2,
+.section__head p {
+  max-width: var(--measure);
+}
+
+.section__head p {
+  margin-top: var(--gap);
+  color: var(--ink-dim);
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.section__kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
+  color: var(--ink-faint);
+  margin-bottom: var(--gap);
+}
+
+.section__kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hall-line);
+}
+
+/* Synthetic-content label. PRODUCT.md: everything demonstrated on this page is
+   authored, and every place it appears has to say so. */
+.synthetic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--ink-faint);
+}
+.synthetic::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}

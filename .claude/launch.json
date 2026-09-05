@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "makeme",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4311", "--directory", "/Users/maciej/makeme"],
+      "port": 4311
+    }
+  ]
+}
